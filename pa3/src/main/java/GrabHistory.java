@@ -60,16 +60,18 @@ public class GrabHistory extends HttpServlet{
                     }
                 }
                 historyQueryString += ")";
-                rs = stmt.executeQuery("SELECT * FROM Rocks where rock_id IN " + historyQueryString);
-                while(rs.next()){
-                    out.println("<tr>" + 
-                            "<th scope=\"row\">"+ rs.getString("rock_id") +"</th>" +
-                            "<td><a href=\"html/details.jsp?rock_id=" + rs.getString("rock_id") + "\">" +
-                            "<img class=\"product-image hvr-grow\" src=\"content/rock" + rs.getString("rock_id") + ".jpg\"></a></td>" +
-                            "<td>" + rs.getString("color") + "</td>" +
-                            "<td>" + rs.getString("quantity_per_order") + "</td>" +
-                            "<td>$" + rs.getString("price_per_order") + "</td>" +
-                            "</tr>");
+                if(historyQueryString != "()"){
+                    rs = stmt.executeQuery("SELECT * FROM Rocks where rock_id IN " + historyQueryString);
+                    while(rs.next()){
+                        out.println("<tr>" + 
+                                "<th scope=\"row\">"+ rs.getString("rock_id") +"</th>" +
+                                "<td><a href=\"html/details.jsp?rock_id=" + rs.getString("rock_id") + "\">" +
+                                "<img class=\"product-image hvr-grow\" src=\"content/rock" + rs.getString("rock_id") + ".jpg\"></a></td>" +
+                                "<td>" + rs.getString("color") + "</td>" +
+                                "<td>" + rs.getString("quantity_per_order") + "</td>" +
+                                "<td>$" + rs.getString("price_per_order") + "</td>" +
+                                "</tr>");
+                    }
                 }
             }
             
