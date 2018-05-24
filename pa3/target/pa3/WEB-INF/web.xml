@@ -2,12 +2,36 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <display-name>Simple Servlet Application</display-name>
     <servlet>
-        <servlet-name>Test</servlet-name>
-        <servlet-class>Test</servlet-class>
+        <servlet-name>GrabRocks</servlet-name>
+        <servlet-class>GrabRocks</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>GrabDetails</servlet-name>
+        <servlet-class>GrabDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddToCart</servlet-name>
+        <servlet-class>AddToCart</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GrabHistory</servlet-name>
+        <servlet-class>GrabHistory</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>Test</servlet-name>
-        <url-pattern>/test</url-pattern>
+        <servlet-name>GrabRocks</servlet-name>
+        <url-pattern>/rocks</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GrabDetails</servlet-name>
+        <url-pattern>/details</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddToCart</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GrabHistory</servlet-name>
+        <url-pattern>/history</url-pattern>
     </servlet-mapping>
 </web-app>
