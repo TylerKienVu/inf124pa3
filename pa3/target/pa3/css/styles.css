@@ -156,8 +156,18 @@ tr {
     text-align: center;
 }
 
+#price-container {
+    margin-left: 5vw;
+    margin-top: 10vh;
+}
+
 #add-to-cart {
     width: 20vw;
     height: 5vh;
     font-size: 2vh;
+    margin-bottom: 15vh;
+}
+
+#product-list {
+    text-align: center;
 }

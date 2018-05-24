@@ -18,6 +18,14 @@
         <servlet-name>GrabHistory</servlet-name>
         <servlet-class>GrabHistory</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GrabCart</servlet-name>
+        <servlet-class>GrabCart</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateOrder</servlet-name>
+        <servlet-class>CreateOrder</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GrabRocks</servlet-name>
         <url-pattern>/rocks</url-pattern>
@@ -33,5 +41,13 @@
     <servlet-mapping>
         <servlet-name>GrabHistory</servlet-name>
         <url-pattern>/history</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GrabCart</servlet-name>
+        <url-pattern>/grabcart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateOrder</servlet-name>
+        <url-pattern>/order</url-pattern>
     </servlet-mapping>
 </web-app>

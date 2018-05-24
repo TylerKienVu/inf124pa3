@@ -30,8 +30,8 @@ public class GrabHistory extends HttpServlet{
         PrintWriter out = response.getWriter();
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-//            conn = DriverManager.getConnection("jdbc:mysql://matt-smith-v4.ics.uci.edu/inf124db061","inf124db061","TMcVwhIMAmW^");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/inf124?autoReconnect=true&useSSL=false","root","mTigerl8855!");
+            conn = DriverManager.getConnection("jdbc:mysql://matt-smith-v4.ics.uci.edu/inf124db061","inf124db061","TMcVwhIMAmW^");
+//            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/inf124?autoReconnect=true&useSSL=false","root","mTigerl8855!");
             stmt = conn.createStatement();         
             
             HttpSession session = request.getSession(true);
@@ -59,21 +59,21 @@ public class GrabHistory extends HttpServlet{
                         historyQueryString += stringToAdd;
                     }
                 }
-                historyQueryString += ")";
-                if(historyQueryString != "()"){
-                    rs = stmt.executeQuery("SELECT * FROM Rocks where rock_id IN " + historyQueryString);
-                    while(rs.next()){
-                        out.println("<tr>" + 
-                                "<th scope=\"row\">"+ rs.getString("rock_id") +"</th>" +
-                                "<td><a href=\"html/details.jsp?rock_id=" + rs.getString("rock_id") + "\">" +
-                                "<img class=\"product-image hvr-grow\" src=\"content/rock" + rs.getString("rock_id") + ".jpg\"></a></td>" +
-                                "<td>" + rs.getString("color") + "</td>" +
-                                "<td>" + rs.getString("quantity_per_order") + "</td>" +
-                                "<td>$" + rs.getString("price_per_order") + "</td>" +
-                                "</tr>");
-                    }
-                }
             }
+            historyQueryString += ")";
+            if(!historyQueryString.equals("()")){
+                rs = stmt.executeQuery("SELECT * FROM Rocks where rock_id IN " + historyQueryString);
+                while(rs.next()){
+                    out.println("<tr>" + 
+                            "<th scope=\"row\">"+ rs.getString("rock_id") +"</th>" +
+                            "<td><a href=\"html/details.jsp?rock_id=" + rs.getString("rock_id") + "\">" +
+                            "<img class=\"product-image hvr-grow\" src=\"content/rock" + rs.getString("rock_id") + ".jpg\"></a></td>" +
+                            "<td>" + rs.getString("color") + "</td>" +
+                            "<td>" + rs.getString("quantity_per_order") + "</td>" +
+                            "<td>$" + rs.getString("price_per_order") + "</td>" +
+                            "</tr>");
+                }
+            }            
             
             out.flush();
         }

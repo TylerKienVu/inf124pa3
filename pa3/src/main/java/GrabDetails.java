@@ -36,8 +36,8 @@ public class GrabDetails extends HttpServlet{
         if(rock_id != null){ 
             try{
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
-    //            conn = DriverManager.getConnection("jdbc:mysql://matt-smith-v4.ics.uci.edu/inf124db061","inf124db061","TMcVwhIMAmW^");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/inf124?autoReconnect=true&useSSL=false","root","mTigerl8855!");
+                conn = DriverManager.getConnection("jdbc:mysql://matt-smith-v4.ics.uci.edu/inf124db061","inf124db061","TMcVwhIMAmW^");
+//                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/inf124?autoReconnect=true&useSSL=false","root","mTigerl8855!");
                 stmt = conn.createStatement();
                 rs = stmt.executeQuery("SELECT * FROM Rocks WHERE rock_id = " + rock_id);
 

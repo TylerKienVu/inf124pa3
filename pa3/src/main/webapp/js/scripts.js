@@ -10,6 +10,11 @@ $(document).ready(function(){
             loadDetails();
         };
     }
+    else if (window.location.pathname.includes("cart.jsp")) {
+        window.onload = function() {
+            loadCart();
+        };
+    }
 });
 
 //takes care of form validation
@@ -83,4 +88,43 @@ function addToCart() {
         $("#cart-alert-container").html("<div class=\"alert alert-success\" role=\"alert\">Item added to cart. Your cart has a total of " +
                 result + " items.</div>");
     }});   
+}
+
+function loadCart() {
+    console.log("loadCart");
+    $.ajax({url: "../grabcart", success: function(result){
+        console.log("success: loadCart");
+        var cartDictionary = {};
+        var resultArray = result.split("\n");
+        var totalPrice = 0;
+        
+        //build cart dict
+        for(var x in resultArray){
+            var rock_info = resultArray[x].split(" ");
+//            console.log("rockid: " + rock_info[0]);
+//            console.log("rockprice: " + rock_info[1]);
+            if(rock_info[0] != ""){
+                if(cartDictionary[rock_info[0]] == undefined){
+                    cartDictionary[rock_info[0]] = [1,rock_info[1]];
+                }
+                else{
+                    cartDictionary[rock_info[0]][0] += 1;
+                }
+                totalPrice += parseFloat(rock_info[1]);
+            }
+        }
+        
+        for(var key in cartDictionary){
+            $("#product-list").append("<tr>");
+            $("#product-list").append("<th>"+key+"</th>");
+            $("#product-list").append("<td>"+cartDictionary[key][0]+"</td>");
+            $("#product-list").append("<td>"+cartDictionary[key][1]+"</td>");
+            $("#product-list").append("</tr>");
+        }
+        
+        console.log(Math.round(totalPrice * 100) / 100);
+        $(".price-display").html("$" + Math.round(totalPrice * 100) / 100);
+        
+    }});  
+    
 }
