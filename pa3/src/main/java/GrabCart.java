@@ -49,16 +49,13 @@ public class GrabCart extends HttpServlet{
             
             for(int i = 0; i < cartList.size(); i++){
                 String rock_id = cartList.get(i);
-                rs = stmt.executeQuery("SELECT * FROM Rocks WHERE rock_id = " + rock_id);
+                rs = stmt.executeQuery("SELECT * FROM rocks WHERE rock_id = " + rock_id);
                 if(rs.next()){
                     out.println(rock_id + " " + rs.getString("price_per_order"));                    
                 }
             }
             
             out.flush();
-            
-            //forward here
-//            RequestDispatcher rd = request.getRequestDispatcher("/history");
         }
         catch(Exception e){
             e.printStackTrace();

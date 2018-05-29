@@ -18,8 +18,6 @@ Requirement fulfillment locations:
 
 2. You can get to the details page by clicking on a rock picture on the home screen. The details.jsp page takes a product identifier as a parameter and uses the servlet GrabDetails.java to grab details about the rock. The "Add to cart" button calls the AddToCart.java servlet. These two servlets modify the session to track history of rocks viewed and cart items.
 
-3. You can get to the checkout page by clicking on "cart" on the navbar. This page uses GrabCart.java servlet to grab all of the rocks currently in the session's cart. The page displays and calculates the total price of all of rocks in the cart. The page has a form where the user can input form data and post to the database.
+3. You can get to the checkout page by clicking on "cart" on the navbar. This page uses GrabCart.java servlet to grab all of the rocks currently in the session's cart. The page displays and calculates the total price of all of rocks in the cart. The page has a form where the user can input form data and post to the database. When the user enters the info for the form and passes the validity check, they can press the "place order" button. This will push all of the necessary data to the database and redirect the user to the order details page using the forward feature of java servlets.
 
-MISSING FROM REQUIREMENT 3:
--missing form submission
--mission order details page
+note: I did not use jsp for this assignment even though my files have (.jsp). I only used java servlets.

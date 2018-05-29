@@ -30,7 +30,7 @@
                                             <a class="nav-link" href="../">Home</a>
                                     </li>
                                     <li class="nav-item active">
-                                            <a class="nav-link" href="productList.php">Cart<span class="sr-only">(current)</span></a>
+                                            <a class="nav-link" href="#">Cart<span class="sr-only">(current)</span></a>
                                     </li>
                             </ul>
                     </div>
@@ -55,7 +55,7 @@
                 </div>    
             </div>
             <div id="order-div">
-                    <form action="/order" method="post" id="purchase-form" class="needs-validation" novalidate>
+                    <form action="../order" method="post" id="purchase-form" class="needs-validation" novalidate>
                       <h5>Order Details</h5>
 <!--                      <div class="form-row">
                         <div class="form-group col-md-3">
@@ -125,7 +125,7 @@
                         </div>
                         <div class="form-group col-md-2">
                           <label for="inputZip">Zip</label>
-                          <input type="number" class="form-control" id="inputZip" onblur="getState(this)"  name="zip" pattern="/(^\d{5}$)|(^\d{5}-\d{4}$)/" required>
+                          <input type="number" class="form-control" id="inputZip"  name="zip" pattern="/(^\d{5}$)|(^\d{5}-\d{4}$)/" required>
                           <div class="invalid-feedback">
                                     Please provide a valid Zip Code
                           </div>
@@ -181,7 +181,7 @@
                         </div>
                         <div class="form-group col-md-2">
                           <label for="inputBillingZip">Zip</label>
-                          <input type="number" class="form-control" id="inputBillingZip" onblur="getState(this)" pattern="/(^\d{5}$)|(^\d{5}-\d{4}$)/" name="billZip" required>
+                          <input type="number" class="form-control" id="inputBillingZip" pattern="/(^\d{5}$)|(^\d{5}-\d{4}$)/" name="billZip" required>
                           <div class="invalid-feedback">
                                     Please provide a valid Zip Code
                           </div>

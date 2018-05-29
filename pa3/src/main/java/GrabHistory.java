@@ -62,7 +62,7 @@ public class GrabHistory extends HttpServlet{
             }
             historyQueryString += ")";
             if(!historyQueryString.equals("()")){
-                rs = stmt.executeQuery("SELECT * FROM Rocks where rock_id IN " + historyQueryString);
+                rs = stmt.executeQuery("SELECT * FROM rocks where rock_id IN " + historyQueryString);
                 while(rs.next()){
                     out.println("<tr>" + 
                             "<th scope=\"row\">"+ rs.getString("rock_id") +"</th>" +

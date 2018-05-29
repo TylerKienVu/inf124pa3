@@ -1,19 +1,19 @@
 $(document).ready(function(){
     console.log(window.location.pathname);
-    if(window.location.pathname == "/pa3/") {
-        window.onload = function() {
-            loadRocks();
-        };
+    if(window.location.pathname === "/pa3/") {
+        loadRocks();
     }
     else if (window.location.pathname.includes("details.jsp")) {
-        window.onload = function() {
-            loadDetails();
-        };
+        loadDetails();
     }
     else if (window.location.pathname.includes("cart.jsp")) {
-        window.onload = function() {
-            loadCart();
-        };
+        loadCart();
+    }
+    else if (window.location.pathname.includes("order")) {
+        loadCart();
+    }
+    else if (window.location.pathname.includes("index.jsp")) {
+        loadRocks();
     }
 });
 
@@ -30,9 +30,9 @@ $(document).ready(function(){
           event.preventDefault();
           event.stopPropagation();
         }
-        else {
-          event.preventDefault();
-        }
+//        else {
+//          event.preventDefault();
+//        }
         form.classList.add('was-validated');
       }, true);
     });
@@ -45,16 +45,18 @@ function loadRocks() {
     $.ajax({url: "rocks", success: function(result){
         console.log("success: loadRocks");
         var rocks = result.split("history");
-//        console.log(result.split("history"))
-        var historyArray = rocks[1].split("\n");
-        var productsArray = rocks[0].split("\n");
         
+        if(rocks[1] !== undefined){
+            var historyArray = rocks[1].split("\n");
+            for(var x in historyArray){
+                $("#product-view-history").append(historyArray[x]);
+//                console.log(historyArray[x]);
+            }
+        }
+
+        var productsArray = rocks[0].split("\n");
         for(var x in productsArray){
             $("#product-list").append(productsArray[x]);
-        }
-        
-        for(var x in historyArray){
-            $("#product-view-history").append(historyArray[x])
         }
     }});     
 }
@@ -92,7 +94,13 @@ function addToCart() {
 
 function loadCart() {
     console.log("loadCart");
-    $.ajax({url: "../grabcart", success: function(result){
+    if(window.location.pathname.includes("order")){
+        var url = "grabcart";
+    }
+    else {
+        var url = "../grabcart"; 
+    }
+    $.ajax({url: url, success: function(result){
         console.log("success: loadCart");
         var cartDictionary = {};
         var resultArray = result.split("\n");
@@ -103,8 +111,8 @@ function loadCart() {
             var rock_info = resultArray[x].split(" ");
 //            console.log("rockid: " + rock_info[0]);
 //            console.log("rockprice: " + rock_info[1]);
-            if(rock_info[0] != ""){
-                if(cartDictionary[rock_info[0]] == undefined){
+            if(rock_info[0] !== ""){
+                if(cartDictionary[rock_info[0]] === undefined){
                     cartDictionary[rock_info[0]] = [1,rock_info[1]];
                 }
                 else{
